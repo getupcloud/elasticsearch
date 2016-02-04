@@ -20,7 +20,7 @@ RUN rpm --import https://packages.elastic.co/GPG-KEY-elasticsearch && \
     yum clean all && \
     mkdir -p /elasticsearch/persistent && \
     chown -R 1001:0 /elasticsearch /usr/share/elasticsearch && \
-    chmod -R 700 /elasticsearch /usr/share/elasticsearch
+    chmod -R 750 /elasticsearch /usr/share/elasticsearch
 
 COPY container-entrypoint /usr/bin/
 COPY elasticsearch.yml logging.yml /etc/elasticsearch/
