@@ -1,4 +1,4 @@
-Memcached Docker Image
+Elasticsearch Docker Image
 ======================
 
 This repository contains Dockerfiles to run Elasticsearch under OpenShift v3.
