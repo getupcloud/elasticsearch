@@ -1,8 +1,7 @@
 #!/bin/bash
 
-CLUSTER_NAME=${CLUSTER_NAME:-cluster}
 ES_HOME=/usr/share/elasticsearch
-DATA_DIR=/elasticsearch/persistent/${CLUSTER_NAME}/data
+DATA_DIR=/elasticsearch/persistent/${ELASTICSEARCH_CLUSTER_NAME}/data
 WORK_DIR=/elasticsearch/work
 CONF_DIR=/etc/elasticsearch
 
@@ -15,19 +14,19 @@ mkdir -p /elasticsearch/CLUSTER_NAME/work
 # the amount of RAM allocated should be half of available instance RAM.
 # ref. https://www.elastic.co/guide/en/elasticsearch/guide/current/heap-sizing.html#_give_half_your_memory_to_lucene
 regex='^([[:digit:]]+)([GgMm])$'
-if [[ "${INSTANCE_RAM}" =~ $regex ]]; then
+if [[ "${ELASTICSEARCH_MAX_MEMORY}" =~ $regex ]]; then
 	num=${BASH_REMATCH[1]}
 	unit=${BASH_REMATCH[2]}
 	if [[ $unit =~ [Gg] ]]; then
 		((num = num * 1024)) # enables math to work out for odd gigs
 	fi
 	if [[ $num -lt 512 ]]; then
-		echo "INSTANCE_RAM set to ${INSTANCE_RAM} but must be at least 512M"
+		echo "ELASTICSEARCH_MAX_MEMORY set to ${ELASTICSEARCH_MAX_MEMORY} but must be at least 512M"
 		exit 1
 	fi
 	export ES_JAVA_OPTS+=" -Xms256M -Xmx$(($num/2))m"
 else
-	echo "INSTANCE_RAM env var is invalid: ${INSTANCE_RAM}"
+	echo "ELASTICSEARCH_MAX_MEMORY env var is invalid: ${ELASTICSEARCH_MAX_MEMORY}"
 	exit 1
 fi
 

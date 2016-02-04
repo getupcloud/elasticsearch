@@ -1,5 +1,5 @@
 # you can override this using by setting a system property, for example -Des.logger.level=DEBUG
-es.logger.level: ${LOGLEVEL}
+es.logger.level: ${ELASTICSEARCH_LOG_LEVEL}
 rootLogger: ${es.logger.level}, console
 logger:
   # log action execution errors for easier debugging

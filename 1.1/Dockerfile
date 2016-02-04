@@ -4,16 +4,15 @@ MAINTAINER Mateus Caruccio <mateus.caruccio@getupcoud.com.br>
 
 ENV HOME=/opt/app-root/src \
   JAVA_VER=1.8.0 \
-  ES_VER=1.1.0 \
   ES_CONF=/usr/share/elasticsearch/config/elasticsearch.yml \
-  CLUSTER_NAME=default-cluster \
-  INSTANCE_RAM=1G \
-  LOGLEVEL=INFO
+  ELASTICSEARCH_CLUSTER_NAME=default-cluster \
+  ELASTICSEARCH_MAX_MEMORY=1G \
+  ELASTICSEARCH_LOG_LEVEL=INFO
 
 LABEL io.k8s.description="Elasticsearch container for allowing indexing and searching of aggregated logs" \
   io.k8s.display-name="Elasticsearch 1.1" \
   io.openshift.expose-services="9200:https, 9300:https" \
-  io.openshift.tags="elasticsearch,search"
+  io.openshift.tags="cache,database,search,elasticsearch"
 
 COPY elasticsearch.repo /etc/yum.repos.d/elasticsearch.repo
 RUN rpm --import https://packages.elastic.co/GPG-KEY-elasticsearch && \

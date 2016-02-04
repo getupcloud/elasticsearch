@@ -1,5 +1,5 @@
 cluster:
-  name: ${CLUSTER_NAME}
+  name: ${ELASTICSEARCH_CLUSTER_NAME}
 
 discovery:
   zen:
@@ -8,6 +8,6 @@ discovery:
         enabled: false
 
 path:
-  data: /elasticsearch/persistent/${CLUSTER_NAME}/data
-  #logs: /elasticsearch/${CLUSTER_NAME}/logs
-  work: /elasticsearch/${CLUSTER_NAME}/work
+  data: /elasticsearch/persistent/${ELASTICSEARCH_CLUSTER_NAME}/data
+  #logs: /elasticsearch/${ELASTICSEARCH_CLUSTER_NAME}/logs
+  work: /elasticsearch/${ELASTICSEARCH_CLUSTER_NAME}/work
