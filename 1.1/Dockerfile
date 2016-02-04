@@ -18,7 +18,7 @@ COPY elasticsearch.repo /etc/yum.repos.d/elasticsearch.repo
 RUN rpm --import https://packages.elastic.co/GPG-KEY-elasticsearch && \
     yum install -y --setopt=tsflags=nodocs elasticsearch java-1.8.0-openjdk && \
     yum clean all && \
-    mkdir -p /elasticsearch && \
+    mkdir -p /elasticsearch/persistent && \
     chown -R 1001:0 /elasticsearch /usr/share/elasticsearch
 
 COPY container-entrypoint /usr/bin/
