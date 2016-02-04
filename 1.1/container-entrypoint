@@ -11,8 +11,8 @@ CONF_DIR=/etc/elasticsearch
 JAVA_OPTS=${JAVA_OPTS:-}
 ES_JAVA_OPTS="-Des.default.path.home=$ES_HOME -Des.default.path.data=$DATA_DIR -Des.default.path.work=$WORK_DIR -Des.default.path.conf=$CONF_DIR"
 
-mkdir -p /elasticsearch/persistent/$CLUSTER_NAME/data
-mkdir -p /elasticsearch/CLUSTER_NAME/work
+mkdir -p /elasticsearch/persistent/$ELASTICSEARCH_CLUSTER_NAME/data
+mkdir -p /elasticsearch/$ELASTICSEARCH_CLUSTER_NAME/work
 
 # the amount of RAM allocated should be half of available instance RAM.
 # ref. https://www.elastic.co/guide/en/elasticsearch/guide/current/heap-sizing.html#_give_half_your_memory_to_lucene
