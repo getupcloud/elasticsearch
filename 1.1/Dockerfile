@@ -1,4 +1,4 @@
-FROM centos:centos7
+FROM openshift/base-centos7
 
 MAINTAINER Mateus Caruccio <mateus.caruccio@getupcoud.com.br>
 
@@ -20,7 +20,7 @@ RUN rpm --import https://packages.elastic.co/GPG-KEY-elasticsearch && \
     yum clean all && \
     mkdir -p /elasticsearch/persistent && \
     chown -R 1001:0 /elasticsearch /usr/share/elasticsearch && \
-    chmod 750 -R /elasticsearch
+    chmod -R og+rwx /elasticsearch
 
 COPY container-entrypoint /usr/bin/
 COPY elasticsearch.yml logging.yml /etc/elasticsearch/
